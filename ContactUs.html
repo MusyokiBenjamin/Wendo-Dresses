@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Function to submit the form via AJAX
+        function submitForm() {
+            var form = document.getElementById('contactForm');
+            var formData = new FormData(form);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'send_email.php', true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === 'success') {
+                        alert('Message sent successfully!');
+                        form.reset(); // Optional: Reset the form after successful submission
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                }
+            };
+            xhr.send(formData);
+        }
+
+        // Function to handle report request
+        function requestReport() {
+            var email = document.querySelector('input[name="email"]').value;
+
+            if (!email) {
+                alert('Please enter your email address.');
+                return;
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'request_report.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.status === 'success') {
+                        alert('Report has been sent to your email!');
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                }
+            };
+            xhr.send('email=' + encodeURIComponent(email));
+        }
+    </script>
+</head>
+<body class="bg-pink-900 dark:bg-pink-900 text-white dark:text-white">
+<nav class="bg-pink-900 dark:bg-pink-900 py-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="Home.php" class="font-bold text-lg">Wendo Dresses Collection</a>
+        <div class="hidden md:flex space-x-4">
+            <a href="Home.php" class="hover:underline">Home</a>
+            <a href="ViewCart.html" class="hover:underline">ViewCart</a>
+            <a href="Login.html" class="hover:underline">Login</a>
+            <a href="ContactUs.html" class="hover:underline">Contact Us</a>
+            <a href="Gallery.html" class="hover:underline">Gallery</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mx-auto mt-8">
+</div>
+
+<div
+    class="bg-gradient-to-br from-purple-600 to-pink-500 dark:from-zinc-800 dark:to-zinc-700 min-h-screen flex flex-col items-center justify-center"
+>
+    <h1 class="text-4xl font-extrabold text-white dark:text-white mb-4">Contact Us</h1>
+    <div class="bg-pink-900 dark:bg-pink-900 p-6 rounded-lg shadow-lg w-full md:w-1/2 lg:w-1/3">
+        <form id="contactForm" onsubmit="event.preventDefault(); submitForm();" class="space-y-4">
+            <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                class="w-full px-4 py-2 rounded-lg border border-white dark:bg-gray-800 dark:border-white focus:outline-none focus:ring-2 focus:ring-white"
+                required
+            />
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                class="w-full px-4 py-2 rounded-lg border border-white dark:bg-gray-800 dark:border-white focus:outline-none focus:ring-2 focus:ring-white"
+                required
+            />
+            <textarea
+                name="message"
+                placeholder="Message"
+                class="w-full px-4 py-2 rounded-lg border border-white dark:bg-gray-800 dark:border-white focus:outline-none focus:ring-2 focus:ring-white"
+                rows="4"
+                required
+            ></textarea>
+            <button
+    type="submit"
+    class="bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-white mr-28"
+>
+    Submit
+</button>
+<!-- New Send Report Button -->
+<button
+    type="button"
+    onclick="requestReport()"
+    class="bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-white"
+>
+    Send Report
+</button>
+
+        </form>
+    </div>
+    <div class="mt-8 text-center text-zinc-700 dark:text-zinc-400">
+        <p>SASA MALL G4 Ground Floor, Moi Avenue.</p>
+        <p>STAR MALL M21 opposite Firestation, Tom Mboya St. Nrb</p>
+        <p>Call Us;
+        0754509754 or 0702560853</p>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer class = 'bg-pink-900 text-white py-8'>
+        <div class = 'container mx-auto px-4 flex flex-wrap justify-between'>
+        <div class = 'w-full md:w-1/4 mb-8 md:mb-0'>
+        <h2 class = 'text-xl font-bold mb-4'>About Us</h2>
+        <p class = 'font-semibold'>Wendo Dresses Collection</p>
+        <p>SASA MALL G4 Ground Floor, Moi Avenue.</p>
+        <p>STAR MALL M21 opposite Firestation, Tom Mboya St. Nrb</p>
+        <p>Call Us;
+        0754509754 or 0702560853</p>
+        <div class = 'flex space-x-4 mt-4'>
+        <a href = 'https://web.facebook.com/?_rdc=1&_rdr' aria-label = 'Facebook'><img src = 'Images/660bcb3e9408cfa1747d2d6e4c8c4526.png' alt = 'Facebook' /></a>
+        <a href = 'https://www.instagram.com/wendo_dresses_collection?igsh=YzA2Z2xkOHhlYTY3' aria-label = 'Instagram'><img src = 'Images/Instagram_logo_2016.svg.png' alt = 'Instagram' /></a>
+        </div>
+        </div>
+    
+        <div class = 'w-full md:w-1/4 mb-8 md:mb-0'>
+        <h2 class = 'text-xl font-bold mb-4'>Latest Reels</h2>
+        <p>- </p>
+        <p>- </p>
+        <p>- </p>
+        </div>
+    
+        <div class = 'w-full md:w-1/4 mb-8 md:mb-0'>
+        <h2 class = 'text-xl font-bold mb-4'>Latest Posts</h2>
+        <p>- </p>
+        <p>- </p>
+        <p>- </p>
+        <p>- </p>
+        </div>
+    
+        <div class = 'w-full md:w-1/4 mb-8 md:mb-0'>
+            <h2 class = 'text-xl font-bold mb-4'>Gallery Photos</h2>
+            <div class = 'grid grid-cols-3 gap-2'>
+            <!-- Wrap each image inside an anchor tag to make them clickable -->
+            <a href = 'Gallery.html'>
+            <img src = 'Images/IMG-20240903-WA0019.jpg' alt = 'Product 4' />
+            </a>
+            <a href = 'Gallery.html'>
+            <img src = 'Images/IMG-20240903-WA0020.jpg' alt = 'Product 5' />
+            </a>
+            <a href = 'Gallery.html'>
+            <img src = 'Images/IMG-20240903-WA0021.jpg' alt = 'Product 6' />
+            </a>
+            </div>
+            </div>
+        <div class = 'bg-pink-900 py-4 mt-8'>
+        <div class = 'container mx-auto px-4 flex flex-wrap justify-between items-center'>
+        <p class = 'text-sm'>&copy;
+        2024 Wendo Dresses Collection. All Rights Reserved.</p>
+        </div>
+        </div>
+        </footer>
+        </body>
+        </html>    

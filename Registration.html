@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wendo Dresses Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-800 dark:bg-gray-800 text-white dark:text-white">
+    <nav class="bg-pink-900 dark:bg-pink-900 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="Home.php" class="font-bold text-lg">Wendo Dresses Collection</a>
+            <div class="hidden md:flex space-x-4">
+                <a href="Home.php" class="hover:underline">Home</a>
+                <a href="AboutUs.html" class="hover:underline">About Us</a>
+                <a href="Login.html" class="hover:underline">Login</a>
+                <a href="ContactUs.html" class="hover:underline">Contact Us</a>
+                <a href="ViewCart.html" class="hover:underline">ViewCart</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mx-auto mt-8">
+        <h2 class="text-3xl font-bold text-center mb-6 text-white dark:text-white">Sign Up Here</h2>
+        <form id="registration-form" action="register.php" method="POST" enctype="multipart/form-data" class="max-w-md mx-auto bg-pink-900 dark:bg-pink-900 shadow-md rounded-lg p-6">
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-white dark:text-white">Full Name</label>
+                <input type="text" id="name" name="name" pattern="[A-Za-z ]{1,}" title="Only letters and spaces are allowed" class="form-input mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 text-black dark:text-white bg-white dark:bg-black" required />
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-white dark:text-white">Email Address</label>
+                <input type="email" id="email" name="email" class="form-input mt-1 block w-full rounded-md border-white dark:border-white text-black dark:text-white bg-white dark:bg-black" required />
+                <div id="email-error" class="text-red-500 text-sm mt-1"></div>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-white dark:text-white">Password</label>
+                <input type="password" id="password" name="password" class="form-input mt-1 block w-full rounded-md border-white dark:border-white text-black dark:text-white bg-white dark:bg-black" required />
+            </div>
+            <div class="mb-4">
+                <label for="confirm-password" class="block text-sm font-medium text-white dark:text-white">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" class="form-input mt-1 block w-full rounded-md border-white dark:border-white text-black dark:text-white bg-white dark:bg-black" required />
+            </div>
+            <div class="mb-4">
+                <label for="phone" class="block text-sm font-medium text-white dark:text-white">Phone Number</label>
+                <div class="flex">
+                    <select id="country-code" name="country-code" class="form-select mt-1 block w-1/4 rounded-md border-white dark:border-white text-black dark:text-white bg-white dark:bg-black" required>
+                        <!-- Country codes options -->
+                        <option value="+1">+1 (USA)</option>
+                        <option value="+91">+91 (India)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+61">+61 (Australia)</option>
+                        <option value="+86">+86 (China)</option>
+                        <option value="+81">+81 (Japan)</option>
+                        <option value="+7">+7 (Russia)</option>
+                        <option value="+27">+27 (South Africa)</option>
+                        <option value="+254">+254 (Kenya)</option>
+                        <option value="+234">+234 (Nigeria)</option>
+                        <option value="+20">+20 (Egypt)</option>
+                        <option value="+55">+55 (Brazil)</option>
+                        <option value="+49">+49 (Germany)</option>
+                        <option value="+33">+33 (France)</option>
+                        <option value="+39">+39 (Italy)</option>
+                        <option value="+52">+52 (Mexico)</option>
+                        <option value="+82">+82 (South Korea)</option>
+                        <option value="+1">+1 (Canada)</option>
+                        <option value="+34">+34 (Spain)</option>
+                        <option value="+54">+54 (Argentina)</option>
+                        <option value="+62">+62 (Indonesia)</option>
+                        <option value="+91">+91 (India)</option>
+                        <option value="+92">+92 (Pakistan)</option>
+                        <option value="+63">+63 (Philippines)</option>
+                        <option value="+880">+880 (Bangladesh)</option>
+                        <option value="+60">+60 (Malaysia)</option>
+                        <option value="+66">+66 (Thailand)</option>
+                        <option value="+84">+84 (Vietnam)</option>
+                        <option value="+351">+351 (Portugal)</option>
+                        <option value="+353">+353 (Ireland)</option>
+                        <option value="+972">+972 (Israel)</option>
+                        
+                    </select>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Phone number must be exactly 10 digits" class="form-input mt-1 block w-3/4 rounded-md border-zinc-300 dark:border-zinc-700 text-black dark:text-white bg-white dark:bg-black" required />
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="address" class="block text-sm font-medium text-white dark:text-white">Address</label>
+                <textarea id="address" name="address" class="form-textarea mt-1 block w-full rounded-md border-white dark:border-white text-black dark:text-white bg-white dark:bg-black" rows="3" required></textarea>
+            </div>
+            <div class="mb-4">
+                <button type="submit" class="bg-gradient-to-r from-green-400 to-blue-500 text-white py-2 px-4 rounded-md hover:from-white hover:to-blue-500">Get Started</button>
+            </div>
+        </form>
+    </div>
+    <footer class = 'bg-pink-900 text-white py-8'>
+        <d class = 'container mx-auto px-4 flex flex-wrap justify-between'>
+        <div class = 'w-full md:w-1/4 mb-8 md:mb-0'>
+        <h2 class = 'text-xl font-bold mb-4'>About Us</h2>
+        <p class = 'font-semibold'>Wendo Dresses Collection</p>
+        <p>SASA MALL G4 Ground Floor, Moi Avenue.</p>
+        <p>STAR MALL M21 opposite Firestation, Tom Mboya St. Nrb</p>
+        <p>Call Us;
+        0754509754 or 0702560853</p>
+        <div class = 'flex space-x-4 mt-4'>
+        <a href = 'https://www.facebook.com/share/p/wPeKSrYfEpPhHi2E/?mibextid=oFDknk' aria-label = 'Facebook'><img src = 'Images/660bcb3e9408cfa1747d2d6e4c8c4526.png' alt = 'Facebook' /></a>
+        <a href = 'https://www.instagram.com/wendo_dresses_collection?igsh=YzA2Z2xkOHhlYTY3' aria-label = 'Instagram'><img src = 'Images/Instagram_logo_2016.svg.png' alt = 'Instagram' /></a>
+        </div>
+        </div>
+    
+        <div class = 'w-full md:w-1/4 mb-8 md:mb-0'>
+        <h2 class = 'text-xl font-bold mb-4'>Latest Reels</h2>
+        <p>- </p>
+        <p>- </p>
+        <p>- </p>
+        </div>
+    
+        <div class = 'w-full md:w-1/4 mb-8 md:mb-0'>
+        <h2 class = 'text-xl font-bold mb-4'>Latest Posts</h2>
+        <p>- </p>
+        <p>- </p>
+        <p>- </p>
+        <p>- </p>
+        </div>
+    
+        <div class = 'w-full md:w-1/4 mb-8 md:mb-0'>
+        <h2 class = 'text-xl font-bold mb-4'>Gallery Photos</h2>
+        <div class = 'grid grid-cols-3 gap-2'>
+        <!-- Wrap each image inside an anchor tag to make them clickable -->
+        <a href = 'Gallery.html'>
+        <img src = 'Images/IMG-20240903-WA0019.jpg' alt = 'Product 4' />
+        </a>
+        <a href = 'Gallery.html'>
+        <img src = 'Images/IMG-20240903-WA0020.jpg' alt = 'Product 5' />
+        </a>
+        <a href = 'Gallery.html'>
+        <img src = 'Images/IMG-20240903-WA0021.jpg' alt = 'Product 6' />
+        </a>
+        </div>
+        </div>
+    
+        <div class = 'bg-pink-900 py-4 mt-8'>
+        <div class = 'container mx-auto px-4 flex justify-center items-center'>
+        <p class = 'text-sm text-center font-bold italic'>&copy;
+        2024 Wendo Dresses Collection. All Rights Reserved.</p>
+        </div>
+        </div>
+        </div>
+        </div>
+        </footer>
+    
+    <script>
+        // Email validation script
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            var emailInput = document.getElementById('email');
+            var email = emailInput.value.trim();
+
+            // Regular expression to validate email format like example@gmail.com
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+            // Check if the email matches the pattern
+            if (!emailPattern.test(email)) {
+                event.preventDefault(); // Prevent form submission
+                document.getElementById('email-error').textContent = "Email address must be in the format example@gmail.com";
+                emailInput.focus(); // Set focus back to email input
+            } else {
+                document.getElementById('email-error').textContent = ""; // Clear any previous error message
+            }
+        });
+    </script>
+</body>
+</html>
